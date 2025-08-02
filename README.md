@@ -1,108 +1,241 @@
-# 💼 LOFT - Reseller Business Tracker
+# DiCalen - AI-Powered Calendar App
 
-*"Track smart. Sell faster."*
+A production-ready, intelligent calendar application built with Next.js, featuring AI-powered scheduling, PWA support, and seamless integrations.
 
-## 🚀 Overview
+## 🚀 Features
 
-LOFT is a comprehensive reseller business tracker designed to help entrepreneurs manage their inventory, track expenses, monitor sales, and analyze profits across platforms like Vinted and Depop.
+- **AI-Powered Scheduling**: Natural language processing for effortless event creation
+- **Multi-View Calendar**: Day, week, month, and agenda views
+- **Smart Notifications**: Email, push, and SMS reminders with Resend
+- **PWA Ready**: Installable on iOS, Android, and desktop
+- **Secure Authentication**: Multiple OAuth providers with Better Auth
+- **File Attachments**: Image and video support with Cloudflare
+- **Stripe Integration**: Subscription management and billing
+- **Responsive Design**: Mobile-first with Tailwind CSS
+- **Dark/Light Mode**: System-aware theme switching
 
-## ✨ Features
+## 🛠 Tech Stack
 
-### Core Features
-- 📦 **Inventory Management** - Add products manually or via barcode scanning
-- 💰 **Expense Tracking** - Log all business expenses with category breakdown
-- 📈 **Sales Tracking** - Sync with Vinted/Depop or manual entry
-- 💹 **Profit Dashboard** - Real-time analytics and insights
+- **Frontend**: Next.js 14 (App Router), React, TypeScript
+- **UI**: Tailwind CSS, shadcn/ui, Radix UI
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: Better Auth with OAuth support
+- **AI**: OpenAI GPT-4 for intelligent scheduling
+- **Payments**: Stripe for subscription management
+- **Email**: Resend for transactional emails
+- **Storage**: Cloudflare Images for media
+- **Deployment**: Vercel-ready
 
-### Advanced Features
-- 🤖 **Smart Price Recommendations** - AI-powered pricing suggestions
-- 👥 **Multi-User Support** - Team collaboration with role-based access
-- 📊 **CSV Export/Import** - Data portability
-- 🔔 **Smart Notifications** - Inventory alerts and goal tracking
-- 🎤 **Voice Notes** - Speak to create items
-- 📸 **Receipt Scanning** - Image-to-expense conversion
+## 📋 Prerequisites
 
-## 🎨 Design System
+- Node.js 18+ 
+- PostgreSQL database
+- Environment variables (see `.env.example`)
 
-- **Colors**: 
-  - Background: #F7F9FA (off-white)
-  - Primary: #24292F (charcoal black)
-  - Accent: #63D2FF (soft blue), #4ECDC4 (mint green)
-- **Typography**: Inter SemiBold (headers), Manrope Regular (body)
-- **Style**: Clean iOS aesthetic with glassmorphism panels
+## 🚀 Quick Start
 
-## 🏗️ Architecture
+1. **Clone and install**
+   ```bash
+   git clone <repository-url>
+   cd dicalen
+   npm install
+   ```
 
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   # Fill in your environment variables
+   ```
+
+3. **Set up database**
+   ```bash
+   npm run db:push
+   npm run db:generate
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+## 🔧 Environment Variables
+
+Create a `.env` file with the following variables:
+
+```env
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/dicalen"
+
+# Better Auth
+BETTER_AUTH_SECRET="your-secret-key-here"
+BETTER_AUTH_URL="http://localhost:3000"
+
+# OAuth Providers
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+GITHUB_CLIENT_ID="your-github-client-id" 
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+# OpenAI for AI features
+OPENAI_API_KEY="your-openai-api-key"
+
+# Stripe
+STRIPE_PUBLISHABLE_KEY="pk_test_..."
+STRIPE_SECRET_KEY="sk_test_..."
+STRIPE_WEBHOOK_SECRET="whsec_..."
+
+# Resend for emails
+RESEND_API_KEY="re_..."
+
+# Cloudflare Images
+CLOUDFLARE_ACCOUNT_ID="your-account-id"
+CLOUDFLARE_API_TOKEN="your-api-token"
+CLOUDFLARE_IMAGES_HASH="your-images-hash"
+
+# App
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
-/
-├── backend/          # Node.js API server
-├── mobile/           # React Native app
-├── shared/           # Shared utilities and types
-└── docs/            # Documentation
-```
 
-## 🚀 Getting Started
+## 📱 PWA Installation
 
-### Prerequisites
-- Node.js 18+
-- React Native CLI
-- MongoDB
-- iOS Simulator / Android Emulator
+DiCalen is a Progressive Web App that can be installed on any device:
 
-### Installation
+- **Desktop**: Click the install button in your browser's address bar
+- **iOS**: Add to Home Screen from Safari
+- **Android**: Use "Add to Home Screen" from Chrome menu
 
-1. Clone the repository
+## 🔐 Authentication
+
+Supports multiple authentication methods:
+- Email/Password with verification
+- Google OAuth
+- GitHub OAuth
+- Apple OAuth (when configured)
+
+## 💳 Subscription Plans
+
+- **Free**: 10 calendars, basic AI, email reminders
+- **Pro ($9.99/month)**: Unlimited calendars, advanced AI, file attachments, priority support
+
+## 🎨 UI Components
+
+Built with shadcn/ui for consistent, accessible components:
+- Buttons, Cards, Inputs, Dialogs
+- Calendar components with drag & drop
+- Dark/light mode support
+- Mobile-responsive design
+
+## 📊 Database Schema
+
+PostgreSQL schema with Prisma ORM:
+- Users with authentication data
+- Calendars with custom colors
+- Events with recurrence support
+- Files for attachments
+- Subscriptions for billing
+- Notifications for reminders
+
+## 🤖 AI Features
+
+OpenAI integration for:
+- Natural language event creation
+- Optimal time suggestions
+- Schedule summarization
+- Smart conflict detection
+
+## 📧 Email Integration
+
+Resend integration for:
+- Event reminders
+- Daily schedule summaries
+- Account notifications
+- Subscription updates
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push to GitHub
+2. Connect to Vercel
+3. Set environment variables
+4. Deploy automatically
+
+### Manual Deployment
+
 ```bash
-git clone https://github.com/sajub21/budget.git
-cd budget
+npm run build
+npm start
 ```
 
-2. Install backend dependencies
-```bash
-cd backend
-npm install
-```
+## 🛣 API Routes
 
-3. Install mobile dependencies
-```bash
-cd ../mobile
-npm install
-```
+- `/api/auth/*` - Authentication endpoints
+- `/api/events` - Event CRUD operations
+- `/api/calendars` - Calendar management
+- `/api/ai/parse` - AI text parsing
+- `/api/stripe/*` - Payment handling
 
-4. Start the development servers
+## 🧪 Development
+
 ```bash
-# Terminal 1 - Backend
-cd backend
+# Development server
 npm run dev
 
-# Terminal 2 - Mobile
-cd mobile
-npm run ios  # or npm run android
+# Type checking
+npm run type-check
+
+# Database operations
+npm run db:generate  # Generate Prisma client
+npm run db:push      # Push schema changes
+npm run db:migrate   # Create migrations
+npm run db:studio    # Open Prisma Studio
+
+# Build for production
+npm run build
 ```
 
-## 💰 Pricing Tiers
+## 📁 Project Structure
 
-- **Free Tier**: Up to 100 items, manual sales tracking
-- **Pro Tier** (£7.99/month): Unlimited items, API integrations, advanced analytics
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React Native, TypeScript, React Navigation
-- **Backend**: Node.js, Express, MongoDB, Mongoose
-- **Authentication**: JWT
-- **Payments**: Stripe
-- **Image Storage**: Cloudinary
-- **Push Notifications**: Firebase Cloud Messaging
-
-## 📱 Supported Platforms
-
-- iOS 12+
-- Android 8+ (API level 26)
+```
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── api/            # API routes
+│   │   ├── auth/           # Authentication pages
+│   │   ├── dashboard/      # Main app interface
+│   │   └── ...
+│   ├── components/         # React components
+│   │   ├── ui/            # shadcn/ui components
+│   │   └── ...
+│   ├── lib/               # Utility libraries
+│   ├── hooks/             # Custom React hooks
+│   ├── store/             # Zustand state management
+│   └── types/             # TypeScript types
+├── prisma/                # Database schema
+├── public/                # Static assets
+└── ...
+```
 
 ## 🤝 Contributing
 
-Please read our [Contributing Guidelines](./CONTRIBUTING.md) before submitting pull requests.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if needed
+5. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+- Documentation: [docs.dicalen.com](https://docs.dicalen.com)
+- Support: [support@dicalen.com](mailto:support@dicalen.com)
+- Issues: GitHub Issues
+
+---
+
+**DiCalen** - Transform your scheduling with AI-powered intelligence.
